@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediX Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- AUTH -->
+<div id="authScreen" class="auth-screen">
+  <div class="auth-left">
+    <div class="auth-brand"><div class="brand-icon">⚕</div><h1>MediX<span>Pro</span></h1><p>La plateforme des étudiants en médecine</p></div>
+    <div class="auth-card">
+      <div id="loginForm" class="auth-form active">
+        <h2>Bon retour 👋</h2>
+        <p class="form-sub">Connectez-vous pour continuer</p>
+        <div class="field"><i class="fas fa-envelope"></i><input type="email" id="loginEmail" placeholder="Adresse e-mail"></div>
+        <div class="field"><i class="fas fa-lock"></i><input type="password" id="loginPassword" placeholder="Mot de passe"><button class="eye-btn" onclick="togglePass('loginPassword')"><i class="fas fa-eye"></i></button></div>
+        <button class="btn-auth" onclick="loginUser()"><span>Se connecter</span><i class="fas fa-arrow-right"></i></button>
+        <p class="switch-link">Pas de compte ? <a onclick="switchForm('registerForm')">Créer un compte</a></p>
+        <div class="divider"><span>ou</span></div>
+        <button class="btn-guest" onclick="loginAsGuest()"><i class="fas fa-user-graduate"></i> Continuer comme invité</button>
+      </div>
+      <div id="registerForm" class="auth-form">
+        <h2>Rejoindre MediX 🎓</h2>
+        <p class="form-sub">Créez votre compte gratuitement</p>
+        <div class="field"><i class="fas fa-user"></i><input type="text" id="regName" placeholder="Nom complet"></div>
+        <div class="field"><i class="fas fa-envelope"></i><input type="email" id="regEmail" placeholder="Adresse e-mail"></div>
+        <div class="field"><i class="fas fa-graduation-cap"></i>
+          <select id="regYear"><option value="">Choisir votre année</option><option value="1">1ère Année</option><option value="2">2ème Année</option><option value="3">3ème Année</option><option value="4">4ème Année</option><option value="5">5ème Année</option><option value="6">6ème Année</option></select>
+        </div>
+        <div class="field"><i class="fas fa-lock"></i><input type="password" id="regPassword" placeholder="Mot de passe (6 min.)"></div>
+        <button class="btn-auth" onclick="registerUser()"><span>Créer mon compte</span><i class="fas fa-arrow-right"></i></button>
+        <p class="switch-link">Déjà un compte ? <a onclick="switchForm('loginForm')">Se connecter</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="auth-right">
+    <div class="auth-features">
+      <div class="af"><div class="af-icon">📝</div><div><h4>QCM Interactif</h4><p>50+ questions médicales avec explications détaillées</p></div></div>
+      <div class="af"><div class="af-icon">🎯</div><div><h4>Examens Blancs</h4><p>Simulez de vrais examens avec minuterie automatique</p></div></div>
+      <div class="af"><div class="af-icon">📚</div><div><h4>Bibliothèque</h4><p>Cours, vidéos et fiches de révision organisés</p></div></div>
+      <div class="af"><div class="af-icon">📊</div><div><h4>Statistiques</h4><p>Suivez votre progression et débloquez des récompenses</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="appScreen" class="app-screen" style="display:none">
+  <nav class="nav">
+    <div class="nav-brand"><div class="nb-icon">⚕</div><span>MediX<b>Pro</b></span></div>
+    <div class="nav-links">
+      <a class="nl active" onclick="showSection('home',this)"><i class="fas fa-home"></i> Accueil</a>
+      <a class="nl" onclick="showSection('qcm',this)"><i class="fas fa-clipboard-list"></i> QCM</a>
+      <a class="nl" onclick="showSection('exam',this)"><i class="fas fa-file-alt"></i> Examens</a>
+      <a class="nl" onclick="showSection('library',this)"><i class="fas fa-book-medical"></i> Bibliothèque</a>
+      <a class="nl" onclick="showSection('stats',this)"><i class="fas fa-chart-bar"></i> Statistiques</a>
+    </div>
+    <div class="nav-right">
+      <div class="user-pill" onclick="toggleMenu()">
+        <div class="up-av" id="navAv">A</div>
+        <span id="navName">Ahmed</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="user-menu" id="userMenu">
+        <div class="um-top"><div class="um-av" id="umAv">A</div><div><h4 id="umName">Ahmed</h4><small id="umEmail">ahmed@medix.dz</small></div></div>
+        <div class="um-stats"><div><b id="umXP">0</b><small>XP</small></div><div><b id="umLvl">1</b><small>Niveau</small></div><div><b id="umStreak">0</b><small>🔥</small></div></div>
+        <button class="um-btn" onclick="showSection('stats',null);toggleMenu()"><i class="fas fa-chart-bar"></i> Mes statistiques</button>
+        <button class="um-btn red" onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+      </div>
+    </div>
+  </nav>
+  <nav class="mob-nav">
+    <a class="mn active" onclick="showSection('home',this)"><i class="fas fa-home"></i><span>Accueil</span></a>
+    <a class="mn" onclick="showSection('qcm',this)"><i class="fas fa-tasks"></i><span>QCM</span></a>
+    <a class="mn" onclick="showSection('exam',this)"><i class="fas fa-file-alt"></i><span>Examens</span></a>
+    <a class="mn" onclick="showSection('library',this)"><i class="fas fa-book"></i><span>Biblio</span></a>
+    <a class="mn" onclick="showSection('stats',this)"><i class="fas fa-chart-bar"></i><span>Stats</span></a>
+  </nav>
+
+  <main class="main">
+
+    <!-- HOME -->
+    <section class="sec active" id="homeSection">
+      <div class="hero">
+        <div class="hero-left">
+          <div class="streak-badge"><i class="fas fa-fire"></i> <span id="streakBadge">0</span> jours consécutifs</div>
+          <h1>Bonjour, <span id="heroName">Ahmed</span> 👋</h1>
+          <p id="heroSub">Prêt à réviser aujourd'hui ?</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="showSection('qcm',null)"><i class="fas fa-play"></i> Commencer QCM</button>
+            <button class="btn-outline" onclick="showSection('exam',null)"><i class="fas fa-file-alt"></i> Examen blanc</button>
+          </div>
+        </div>
+        <div class="xp-ring-wrap">
+          <svg viewBox="0 0 120 120"><circle class="ring-bg" cx="60" cy="60" r="50"/><circle class="ring-fg" cx="60" cy="60" r="50" id="xpRing"/></svg>
+          <div class="ring-inner"><span id="xpPct">0%</span><small>prochain niveau</small></div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="sr-card" style="--c:#0066FF"><i class="fas fa-brain"></i><div><h3 id="hsXP">0</h3><p>Points XP</p></div></div>
+        <div class="sr-card" style="--c:#00D4AA"><i class="fas fa-check-circle"></i><div><h3 id="hsQCM">0</h3><p>QCM résolus</p></div></div>
+        <div class="sr-card" style="--c:#FF6B6B"><i class="fas fa-fire"></i><div><h3 id="hsStreak">0</h3><p>Jours consécutifs</p></div></div>
+        <div class="sr-card" style="--c:#FFB800"><i class="fas fa-bullseye"></i><div><h3 id="hsAcc">0%</h3><p>Précision</p></div></div>
+      </div>
+      <div class="home-grid">
+        <div class="hg-main">
+          <h2 class="sec-title">Années d'études</h2>
+          <div class="years-grid" id="yearsGrid"></div>
+          <h2 class="sec-title" style="margin-top:30px">Activité récente</h2>
+          <div id="recentActivity"></div>
+        </div>
+        <div class="hg-side">
+          <div class="leaderboard-card">
+            <h3>🏆 Classement</h3>
+            <div id="leaderboard"></div>
+          </div>
+          <div class="quick-actions-card">
+            <h3>⚡ Accès rapide</h3>
+            <button onclick="launchQCM('anatomy')"><i class="fas fa-bone"></i> QCM Anatomie</button>
+            <button onclick="launchQCM('cardiology')"><i class="fas fa-heartbeat"></i> QCM Cardiologie</button>
+            <button onclick="startRandomExam()"><i class="fas fa-random"></i> Examen aléatoire</button>
+            <button onclick="showSection('library',null)"><i class="fas fa-book"></i> Bibliothèque</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QCM -->
+    <section class="sec" id="qcmSection">
+      <div id="qcmMenu">
+        <h1 class="page-title">QCM Interactif 📝</h1>
+        <p class="page-sub">Choisissez une matière et entraînez-vous</p>
+        <div class="qcm-grid" id="qcmGrid"></div>
+        <h2 class="sec-title" style="margin-top:30px">Historique</h2>
+        <div id="qcmHistory"></div>
+      </div>
+      <div id="qcmPlay" style="display:none">
+        <div class="play-header">
+          <button class="btn-back" onclick="exitQCM()"><i class="fas fa-arrow-left"></i> Quitter</button>
+          <div class="play-progress">
+            <span id="qcmProg">1/10</span>
+            <div class="prog-bar"><div id="qcmProgFill"></div></div>
+          </div>
+          <div class="play-timer">⏱ <span id="qcmTimer">00:00</span></div>
+        </div>
+        <div class="question-card">
+          <div class="q-tag" id="qcmTag"></div>
+          <h2 id="qcmQ"></h2>
+          <div class="options" id="qcmOpts"></div>
+          <div class="explanation" id="qcmExp" style="display:none"></div>
+          <button class="btn-primary" id="qcmNext" onclick="nextQuestion()" style="display:none">Suivant <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div id="qcmResult" style="display:none">
+        <div class="result-card">
+          <div class="result-emoji" id="resEmoji">🎉</div>
+          <h2 id="resTitle">Excellent !</h2>
+          <div class="result-score" id="resScore">8/10</div>
+          <div class="result-details">
+            <div><b id="resOK">0</b><small>Correct ✅</small></div>
+            <div><b id="resKO">0</b><small>Faux ❌</small></div>
+            <div><b id="resAcc">0%</b><small>Précision</small></div>
+            <div><b id="resTime">0:00</b><small>Temps</small></div>
+          </div>
+          <div class="xp-earned">+<span id="resXP">0</span> XP gagnés !</div>
+          <div class="result-btns">
+            <button class="btn-primary" onclick="restartQCM()"><i class="fas fa-redo"></i> Recommencer</button>
+            <button class="btn-outline" onclick="exitQCM()">Menu QCM</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXAMENS -->
+    <section class="sec" id="examSection">
+      <div id="examMenu">
+        <h1 class="page-title">Examens Blancs 🎯</h1>
+        <p class="page-sub">Conditions réelles avec minuterie automatique</p>
+        <div class="exam-random">
+          <div class="exam-random-info">
+            <div style="font-size:48px">🎲</div>
+            <div><h2>Examen Aléatoire</h2><p>Questions mélangées de toutes les matières</p></div>
+          </div>
+          <div class="exam-config">
+            <div class="cfg-group">
+              <label>Questions</label>
+              <div class="cfg-btns">
+                <button class="cb active" onclick="setCfg('q',10,this)">10</button>
+                <button class="cb" onclick="setCfg('q',20,this)">20</button>
+                <button class="cb" onclick="setCfg('q',30,this)">30</button>
+              </div>
+            </div>
+            <div class="cfg-group">
+              <label>Durée</label>
+              <div class="cfg-btns">
+                <button class="cb active" onclick="setCfg('t',15,this)">15 min</button>
+                <button class="cb" onclick="setCfg('t',30,this)">30 min</button>
+                <button class="cb" onclick="setCfg('t',60,this)">60 min</button>
+              </div>
+            </div>
+            <button class="btn-primary" onclick="startRandomExam()"><i class="fas fa-play"></i> Commencer</button>
+          </div>
+        </div>
+        <h2 class="sec-title" style="margin-top:30px">Par matière</h2>
+        <div class="exam-subjects" id="examSubjects"></div>
+        <h2 class="sec-title" style="margin-top:30px">Historique des examens</h2>
+        <div id="examHistory"></div>
+      </div>
+      <div id="examPlay" style="display:none">
+        <div class="play-header">
+          <button class="btn-back" onclick="confirmExit()"><i class="fas fa-times"></i> Abandonner</button>
+          <div class="play-progress">
+            <span id="examProg">1/20</span>
+            <div class="prog-bar"><div id="examProgFill"></div></div>
+          </div>
+          <div class="play-timer exam-timer" id="examTimer"><i class="fas fa-clock"></i> <span id="examTime">30:00</span></div>
+        </div>
+        <div class="exam-layout">
+          <div class="question-card">
+            <div class="exam-q-meta"><span class="q-tag" id="examTag"></span><span class="q-num" id="examQNum">Q1</span></div>
+            <h2 id="examQ"></h2>
+            <div class="options" id="examOpts"></div>
+            <div class="exam-nav">
+              <button class="btn-outline" id="examPrev" onclick="examGoTo(examState.idx-1)" style="display:none"><i class="fas fa-arrow-left"></i> Précédent</button>
+              <button class="btn-primary" id="examNext" onclick="examGoTo(examState.idx+1)">Suivant <i class="fas fa-arrow-right"></i></button>
+              <button class="btn-primary" id="examFinish" onclick="finishExam()" style="display:none"><i class="fas fa-flag-checkered"></i> Terminer</button>
+            </div>
+          </div>
+          <div class="exam-map-card">
+            <h4>Navigation</h4>
+            <div id="examMap"></div>
+            <button class="btn-primary" style="width:100%;margin-top:12px" onclick="finishExam()"><i class="fas fa-flag-checkered"></i> Remettre la copie</button>
+          </div>
+        </div>
+      </div>
+      <div id="examResult" style="display:none">
+        <div class="exam-result-card">
+          <div class="result-emoji" id="examResEmoji">🎓</div>
+          <h2 id="examResTitle">Résultats</h2>
+          <div class="score-ring-wrap">
+            <svg viewBox="0 0 120 120"><circle class="ring-bg" cx="60" cy="60" r="50"/><circle class="ring-fg" cx="60" cy="60" r="50" id="examScoreRing"/></svg>
+            <div class="ring-inner"><span id="examScorePct">0%</span><small>Score</small></div>
+          </div>
+          <div class="mention" id="examMention"></div>
+          <div class="result-details" style="grid-template-columns:repeat(4,1fr)">
+            <div><b id="erOK">0</b><small>✅ Bonnes</small></div>
+            <div><b id="erKO">0</b><small>❌ Mauvaises</small></div>
+            <div><b id="erSkip">0</b><small>➖ Sans réponse</small></div>
+            <div><b id="erTime">0:00</b><small>⏱ Temps</small></div>
+          </div>
+          <div class="xp-earned">+<span id="erXP">0</span> XP gagnés !</div>
+          <div class="correction-section"><h3>📋 Correction détaillée</h3><div id="correctionList"></div></div>
+          <div class="result-btns">
+            <button class="btn-primary" onclick="retryExam()"><i class="fas fa-redo"></i> Recommencer</button>
+            <button class="btn-outline" onclick="exitExam()">Menu examens</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIBLIOTHEQUE -->
+    <section class="sec" id="librarySection">
+      <h1 class="page-title">Bibliothèque Médicale 📚</h1>
+      <div class="lib-filters" id="libFilters">
+        <button class="lf active" onclick="filterLib('all',this)">Tout</button>
+        <button class="lf" onclick="filterLib('anatomy',this)">Anatomie</button>
+        <button class="lf" onclick="filterLib('physiology',this)">Physiologie</button>
+        <button class="lf" onclick="filterLib('pharmacology',this)">Pharmacologie</button>
+        <button class="lf" onclick="filterLib('cardiology',this)">Cardiologie</button>
+        <button class="lf" onclick="filterLib('neurology',this)">Neurologie</button>
+        <button class="lf" onclick="filterLib('microbiology',this)">Microbiologie</button>
+      </div>
+      <div class="lib-grid" id="libGrid"></div>
+    </section>
+
+    <!-- STATS -->
+    <section class="sec" id="statsSection">
+      <h1 class="page-title">Mes Statistiques 📊</h1>
+      <div class="stats-layout">
+        <div class="stats-main">
+          <div class="chart-card"><h3>Performance cette semaine</h3><canvas id="statsChart" height="180"></canvas></div>
+          <h2 class="sec-title" style="margin-top:25px">Récompenses 🏅</h2>
+          <div class="achievements-grid" id="achievementsGrid"></div>
+        </div>
+        <div class="stats-side">
+          <div class="stat-big" style="--c:#0066FF"><i class="fas fa-clipboard-check"></i><div><h2 id="stQCM">0</h2><p>QCM résolus</p></div></div>
+          <div class="stat-big" style="--c:#00D4AA"><i class="fas fa-percentage"></i><div><h2 id="stAcc">0%</h2><p>Précision</p></div></div>
+          <div class="stat-big" style="--c:#FF6B6B"><i class="fas fa-fire"></i><div><h2 id="stStr">0</h2><p>Jours consécutifs</p></div></div>
+          <div class="stat-big" style="--c:#8B5CF6"><i class="fas fa-trophy"></i><div><h2 id="stLvl">1</h2><p>Niveau actuel</p></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+<div class="xp-pop" id="xpPop"></div>
+<div class="overlay" id="confirmOverlay" style="display:none">
+  <div class="confirm-box">
+    <i class="fas fa-exclamation-triangle"></i>
+    <h3>Abandonner l'examen ?</h3>
+    <p>Votre progression sera perdue.</p>
+    <div class="confirm-btns">
+      <button class="btn-outline" onclick="closeConfirm()">Continuer</button>
+      <button class="btn-danger" onclick="exitExam()">Abandonner</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
