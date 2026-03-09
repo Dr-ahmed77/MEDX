@@ -76,7 +76,7 @@ const LIBRARY = [
 //      exp  → explication affichée après la réponse
 //
 //  ✅ Pour AJOUTER une question : copiez un bloc { q:..., opts:..., a:..., exp:... }
-//     et collez-le dans la matière voulue (n'oubliez pas la virgule avant)
+//     et collez-le dans la matière voulue (n\'oubliez pas la virgule avant)
 //  ✏️  Pour MODIFIER : changez directement le texte
 //  🗑  Pour SUPPRIMER : supprimez le bloc entier { ... },
 // ══════════════════════════════════════════
@@ -96,14 +96,14 @@ const QCM_BANK = {
         q: 'Le nerf sciatique est une branche du plexus :',
         opts: ['Cervical', 'Brachial', 'Lombaire', 'Sacré'],
         a: 3,
-        exp: 'Le nerf sciatique (grand nerf ischiatique) est issu du plexus sacré (L4-S3). C'est le plus grand nerf du corps humain.'
+        exp: 'Le nerf sciatique (grand nerf ischiatique) est issu du plexus sacré (L4-S3). C\'est le plus grand nerf du corps humain.'
       },
 
       {
-        q: 'L'artère coronaire gauche se divise en :',
+        q: 'L\'artère coronaire gauche se divise en :',
         opts: ['IVA et Cx', 'IVP et marginale', 'Auriculaire et IVA', 'Cx et RD'],
         a: 0,
-        exp: 'L'artère coronaire gauche (tronc commun gauche) se divise en artère interventriculaire antérieure (IVA) et artère circonflexe (Cx).'
+        exp: 'L\'artère coronaire gauche (tronc commun gauche) se divise en artère interventriculaire antérieure (IVA) et artère circonflexe (Cx).'
       },
 
       {
@@ -115,7 +115,7 @@ const QCM_BANK = {
 
       {
         q: 'Le foramen oval est situé dans :',
-        opts: ['Le temporal', 'L'occipital', 'Le sphénoïde', 'L'ethmoïde'],
+        opts: ['Le temporal', 'L\'occipital', 'Le sphénoïde', 'L\'ethmoïde'],
         a: 2,
         exp: 'Le foramen oval est situé dans la grande aile du sphénoïde. Il laisse passer le V3 (nerf mandibulaire).'
       },
@@ -128,10 +128,10 @@ const QCM_BANK = {
       },
 
       {
-        q: 'L'artère rénale gauche naît de :',
-        opts: ['L'aorte au niveau L1', 'L'aorte au niveau L2', 'L'aorte au niveau L3', 'La veine cave inférieure'],
+        q: 'L\'artère rénale gauche naît de :',
+        opts: ['L\'aorte au niveau L1', 'L\'aorte au niveau L2', 'L\'aorte au niveau L3', 'La veine cave inférieure'],
         a: 1,
-        exp: 'Les artères rénales naissent de l'aorte abdominale au niveau L2. La gauche est plus courte, la droite passe derrière la VCI.'
+        exp: 'Les artères rénales naissent de l\'aorte abdominale au niveau L2. La gauche est plus courte, la droite passe derrière la VCI.'
       },
 
       {
@@ -145,14 +145,14 @@ const QCM_BANK = {
         q: 'Le canal de Guyon contient :',
         opts: ['Le nerf médian', 'Le nerf radial', 'Le nerf ulnaire', 'Le nerf musculo-cutané'],
         a: 2,
-        exp: 'Le canal de Guyon est situé au poignet et contient le nerf ulnaire (cubital) et l'artère ulnaire.'
+        exp: 'Le canal de Guyon est situé au poignet et contient le nerf ulnaire (cubital) et l\'artère ulnaire.'
       },
 
       {
-        q: 'L'appendice est le plus souvent situé :',
+        q: 'L\'appendice est le plus souvent situé :',
         opts: ['En position pelvienne', 'En position rétro-caecale', 'En position latéro-caecale', 'En position sous-hépatique'],
         a: 1,
-        exp: 'L'appendice vermiculaire est dans 65% des cas en position rétro-caecale. La position pelvienne représente environ 30% des cas.'
+        exp: 'L\'appendice vermiculaire est dans 65% des cas en position rétro-caecale. La position pelvienne représente environ 30% des cas.'
       },
 
       {
@@ -178,14 +178,14 @@ const QCM_BANK = {
         q: 'La pression artérielle systolique normale est :',
         opts: ['60-80 mmHg', '80-100 mmHg', '100-140 mmHg', '140-160 mmHg'],
         a: 2,
-        exp: 'La pression artérielle systolique normale est entre 100 et 140 mmHg. Au-delà de 140 mmHg, on parle d'hypertension artérielle.'
+        exp: 'La pression artérielle systolique normale est entre 100 et 140 mmHg. Au-delà de 140 mmHg, on parle d\'hypertension artérielle.'
       },
 
       {
-        q: 'La capacité vitale normale est d'environ :',
+        q: 'La capacité vitale normale est d\'environ :',
         opts: ['1-2 litres', '3-5 litres', '6-8 litres', '8-10 litres'],
         a: 1,
-        exp: 'La capacité vitale est d'environ 3,5 à 4,5 litres chez un adulte sain. Elle représente le volume maximum expiré après une inspiration maximale.'
+        exp: 'La capacité vitale est d\'environ 3,5 à 4,5 litres chez un adulte sain. Elle représente le volume maximum expiré après une inspiration maximale.'
       },
 
       {
@@ -206,14 +206,14 @@ const QCM_BANK = {
         q: 'La filtration glomérulaire normale est de :',
         opts: ['30-60 mL/min', '60-90 mL/min', '90-120 mL/min', '120-180 mL/min'],
         a: 2,
-        exp: 'Le DFG normal est de 90 à 120 mL/min/1,73m². En dessous de 60 mL/min, on parle d'insuffisance rénale.'
+        exp: 'Le DFG normal est de 90 à 120 mL/min/1,73m². En dessous de 60 mL/min, on parle d\'insuffisance rénale.'
       },
 
       {
-        q: 'Le potentiel de repos de la membrane est d'environ :',
+        q: 'Le potentiel de repos de la membrane est d\'environ :',
         opts: ['-30 mV', '-50 mV', '-70 mV', '-90 mV'],
         a: 2,
-        exp: 'Le potentiel de repos est d'environ -70 mV. Il est maintenu par la pompe Na+/K+-ATPase.'
+        exp: 'Le potentiel de repos est d\'environ -70 mV. Il est maintenu par la pompe Na+/K+-ATPase.'
       },
 
       {
@@ -224,10 +224,10 @@ const QCM_BANK = {
       },
 
       {
-        q: 'Le volume systolique normal au repos est d'environ :',
+        q: 'Le volume systolique normal au repos est d\'environ :',
         opts: ['30-40 mL', '50-70 mL', '80-110 mL', '120-150 mL'],
         a: 1,
-        exp: 'Le volume systolique normal est d'environ 50-70 mL au repos. Débit cardiaque = VS × FC ≈ 4-5 L/min.'
+        exp: 'Le volume systolique normal est d\'environ 50-70 mL au repos. Débit cardiaque = VS × FC ≈ 4-5 L/min.'
       },
 
       {
@@ -241,7 +241,7 @@ const QCM_BANK = {
         q: 'Le péristaltisme intestinal est contrôlé principalement par :',
         opts: ['Le système nerveux central', 'Le système nerveux entérique', 'Le système nerveux sympathique', 'Les hormones surrénaliennes'],
         a: 1,
-        exp: 'Le péristaltisme est contrôlé par le système nerveux entérique (plexus d'Auerbach et Meissner), appelé le "deuxième cerveau".'
+        exp: 'Le péristaltisme est contrôlé par le système nerveux entérique (plexus d\'Auerbach et Meissner), appelé le "deuxième cerveau".'
       },
 
     ]
@@ -257,10 +257,10 @@ const QCM_BANK = {
     questions: [
 
       {
-        q: 'L'amoxicilline appartient à la famille des :',
+        q: 'L\'amoxicilline appartient à la famille des :',
         opts: ['Céphalosporines', 'Pénicillines', 'Macrolides', 'Fluoroquinolones'],
         a: 1,
-        exp: 'L'amoxicilline est une aminopénicilline. Elle inhibe la synthèse de la paroi bactérienne en bloquant les PLP.'
+        exp: 'L\'amoxicilline est une aminopénicilline. Elle inhibe la synthèse de la paroi bactérienne en bloquant les PLP.'
       },
 
       {
@@ -271,17 +271,17 @@ const QCM_BANK = {
       },
 
       {
-        q: 'L'aspirine à faible dose inhibe :',
+        q: 'L\'aspirine à faible dose inhibe :',
         opts: ['La COX-1 uniquement', 'La COX-2 uniquement', 'Les deux COX', 'La lipoxygénase'],
         a: 0,
-        exp: 'L'aspirine à faible dose (75-150 mg) inhibe de façon irréversible la COX-1 plaquettaire, réduisant la synthèse de TXA2.'
+        exp: 'L\'aspirine à faible dose (75-150 mg) inhibe de façon irréversible la COX-1 plaquettaire, réduisant la synthèse de TXA2.'
       },
 
       {
         q: 'Les béta-bloquants sont contre-indiqués dans :',
-        opts: ['L'hypertension', 'L'asthme', 'L'angor', 'La tachycardie'],
+        opts: ['L\'hypertension', 'L\'asthme', 'L\'angor', 'La tachycardie'],
         a: 1,
-        exp: 'Les béta-bloquants sont contre-indiqués dans l'asthme car le blocage des récepteurs béta-2 bronchiques provoque un bronchospasme.'
+        exp: 'Les béta-bloquants sont contre-indiqués dans l\'asthme car le blocage des récepteurs béta-2 bronchiques provoque un bronchospasme.'
       },
 
       {
@@ -295,12 +295,12 @@ const QCM_BANK = {
         q: 'Les IEC inhibent la conversion de :',
         opts: ['Rénine → Angiotensine I', 'Angiotensine I → Angiotensine II', 'Angiotensine II → Aldostérone', 'Bradykinine → métabolites inactifs'],
         a: 1,
-        exp: 'Les IEC bloquent l'ECA qui transforme l'angiotensine I en angiotensine II. Ils réduisent aussi la dégradation de la bradykinine (d'où la toux sèche).'
+        exp: 'Les IEC bloquent l\'ECA qui transforme l\'angiotensine I en angiotensine II. Ils réduisent aussi la dégradation de la bradykinine (d\'où la toux sèche).'
       },
 
       {
         q: 'Le méthotrexate est un antimétabolite analogue de :',
-        opts: ['L'adénine', 'La thymine', 'L'acide folique', 'L'uracile'],
+        opts: ['L\'adénine', 'La thymine', 'L\'acide folique', 'L\'uracile'],
         a: 2,
         exp: 'Le méthotrexate inhibe la dihydrofolate réductase (DHFR), bloquant la synthèse des nucléotides. Utilisé comme anticancéreux et immunosuppresseur.'
       },
@@ -309,7 +309,7 @@ const QCM_BANK = {
         q: 'La morphine est un agoniste des récepteurs :',
         opts: ['Alpha-adrénergiques', 'Béta-adrénergiques', 'Opioïdes mu', 'Dopaminergiques'],
         a: 2,
-        exp: 'La morphine est un agoniste des récepteurs opioïdes mu (μ). Ils médient l'analgésie mais aussi la dépression respiratoire et la dépendance.'
+        exp: 'La morphine est un agoniste des récepteurs opioïdes mu (μ). Ils médient l\'analgésie mais aussi la dépression respiratoire et la dépendance.'
       },
 
     ]
@@ -325,52 +325,52 @@ const QCM_BANK = {
     questions: [
 
       {
-        q: 'L'onde P de l'ECG correspond à :',
+        q: 'L\'onde P de l\'ECG correspond à :',
         opts: ['La dépolarisation ventriculaire', 'La repolarisation ventriculaire', 'La dépolarisation auriculaire', 'La repolarisation auriculaire'],
         a: 2,
-        exp: 'L'onde P correspond à la dépolarisation auriculaire. Sa durée normale est < 120 ms.'
+        exp: 'L\'onde P correspond à la dépolarisation auriculaire. Sa durée normale est < 120 ms.'
       },
 
       {
-        q: 'L'insuffisance cardiaque gauche se manifeste par :',
+        q: 'L\'insuffisance cardiaque gauche se manifeste par :',
         opts: ['Œdèmes des membres inférieurs', 'Turgescence jugulaire', 'Dyspnée et OAP', 'Hépatomégalie'],
         a: 2,
-        exp: 'L'IC gauche entraîne une congestion pulmonaire : dyspnée d'effort, orthopnée, OAP. L'IC droite donne les signes veineux systémiques.'
+        exp: 'L\'IC gauche entraîne une congestion pulmonaire : dyspnée d\'effort, orthopnée, OAP. L\'IC droite donne les signes veineux systémiques.'
       },
 
       {
         q: 'La fibrillation auriculaire se caractérise par :',
-        opts: ['Rythme régulier avec ondes P normales', 'Absence d'ondes P, rythme irrégulier', 'Ondes P larges et encoché', 'Allongement du PR'],
+        opts: ['Rythme régulier avec ondes P normales', 'Absence d\'ondes P, rythme irrégulier', 'Ondes P larges et encoché', 'Allongement du PR'],
         a: 1,
-        exp: 'La FA est caractérisée par une activité auriculaire chaotique (absence d'ondes P) avec une réponse ventriculaire irrégulière.'
+        exp: 'La FA est caractérisée par une activité auriculaire chaotique (absence d\'ondes P) avec une réponse ventriculaire irrégulière.'
       },
 
       {
         q: 'Le signe de De Musset est observé dans :',
-        opts: ['Le rétrécissement mitral', 'L'insuffisance aortique', 'La péricardite', 'La myocardiopathie'],
+        opts: ['Le rétrécissement mitral', 'L\'insuffisance aortique', 'La péricardite', 'La myocardiopathie'],
         a: 1,
-        exp: 'Le signe de De Musset (oscillation de la tête synchrone au pouls) est un signe d'insuffisance aortique sévère, dû à la forte pression pulsée.'
+        exp: 'Le signe de De Musset (oscillation de la tête synchrone au pouls) est un signe d\'insuffisance aortique sévère, dû à la forte pression pulsée.'
       },
 
       {
-        q: 'Le traitement de 1ère intention de l'HTA essentielle non compliquée :',
-        opts: ['Bêta-bloquants', 'IEC ou ARA2', 'Diurétiques de l'anse', 'Inhibiteurs calciques vérapamil'],
+        q: 'Le traitement de 1ère intention de l\'HTA essentielle non compliquée :',
+        opts: ['Bêta-bloquants', 'IEC ou ARA2', 'Diurétiques de l\'anse', 'Inhibiteurs calciques vérapamil'],
         a: 1,
-        exp: 'Les IEC (ou ARA2) sont recommandés en première intention dans l'HTA essentielle, surtout avec diabète ou protéinurie.'
+        exp: 'Les IEC (ou ARA2) sont recommandés en première intention dans l\'HTA essentielle, surtout avec diabète ou protéinurie.'
       },
 
       {
-        q: 'L'intervalle QT normal est :',
+        q: 'L\'intervalle QT normal est :',
         opts: ['< 300 ms', '300-440 ms', '440-500 ms', '> 500 ms'],
         a: 1,
-        exp: 'Le QT normal est < 440 ms chez l'homme et < 460 ms chez la femme. Au-delà de 500 ms, le risque de torsades de pointes augmente.'
+        exp: 'Le QT normal est < 440 ms chez l\'homme et < 460 ms chez la femme. Au-delà de 500 ms, le risque de torsades de pointes augmente.'
       },
 
       {
-        q: 'L'endocardite infectieuse se manifeste typiquement par :',
+        q: 'L\'endocardite infectieuse se manifeste typiquement par :',
         opts: ['Fièvre + souffle cardiaque', 'Hypotension + bradycardie', 'Cyanose + dyspnée', 'Douleur thoracique + sus-décalage ST'],
         a: 0,
-        exp: 'Triade classique : fièvre prolongée + souffle cardiaque + porte d'entrée infectieuse. Confirmée par hémocultures et écho (végétation).'
+        exp: 'Triade classique : fièvre prolongée + souffle cardiaque + porte d\'entrée infectieuse. Confirmée par hémocultures et écho (végétation).'
       },
 
     ]
@@ -386,28 +386,28 @@ const QCM_BANK = {
     questions: [
 
       {
-        q: 'L'AVC ischémique dans le territoire de l'ACM gauche entraîne :',
+        q: 'L\'AVC ischémique dans le territoire de l\'ACM gauche entraîne :',
         opts: ['Hémiplégie droite + aphasie', 'Hémiplégie gauche', 'Syndrome cérébelleux', 'Syndrome de la queue de cheval'],
         a: 0,
-        exp: 'L'occlusion de l'ACM gauche entraîne : hémiplégie droite brachio-faciale + hémianesthésie + hémianopsie + aphasie (hémisphère dominant).'
+        exp: 'L\'occlusion de l\'ACM gauche entraîne : hémiplégie droite brachio-faciale + hémianesthésie + hémianopsie + aphasie (hémisphère dominant).'
       },
 
       {
         q: 'Le syndrome de Claude Bernard-Horner comprend :',
         opts: ['Mydriase + exophtalmie', 'Myosis + ptosis + énophtalmie', 'Diplopie + nystagmus', 'Paralysie faciale + surdité'],
         a: 1,
-        exp: 'Le syndrome de CBH résulte de l'interruption de la voie sympathique : myosis + ptosis + énophtalmie + anhidrose homolatérale.'
+        exp: 'Le syndrome de CBH résulte de l\'interruption de la voie sympathique : myosis + ptosis + énophtalmie + anhidrose homolatérale.'
       },
 
       {
         q: 'La sclérose en plaques est caractérisée par :',
         opts: ['Atteinte du SNP', 'Plaques de démyélinisation du SNC', 'Dégénérescence des motoneurones', 'Inflammation des méninges'],
         a: 1,
-        exp: 'La SEP est une maladie auto-immune du SNC avec des plaques de démyélinisation disséminées dans l'espace et le temps.'
+        exp: 'La SEP est une maladie auto-immune du SNC avec des plaques de démyélinisation disséminées dans l\'espace et le temps.'
       },
 
       {
-        q: 'Le traitement de référence de l'épilepsie généralisée est :',
+        q: 'Le traitement de référence de l\'épilepsie généralisée est :',
         opts: ['Valproate de sodium', 'Carbamazépine', 'Phénytoïne', 'Lamotrigine seule'],
         a: 0,
         exp: 'Le valproate (Dépakine) est le traitement de référence des épilepsies généralisées. Attention : tératogène, contre-indiqué sans contraception.'
@@ -422,9 +422,9 @@ const QCM_BANK = {
 
       {
         q: 'Le signe de Kernig est positif dans :',
-        opts: ['La maladie de Parkinson', 'La méningite', 'L'AVC ischémique', 'L'épilepsie'],
+        opts: ['La maladie de Parkinson', 'La méningite', 'L\'AVC ischémique', 'L\'épilepsie'],
         a: 1,
-        exp: 'Le signe de Kernig (résistance à l'extension du genou) est un signe méningé évocateur de méningite, avec raideur de nuque et signe de Brudzinski.'
+        exp: 'Le signe de Kernig (résistance à l\'extension du genou) est un signe méningé évocateur de méningite, avec raideur de nuque et signe de Brudzinski.'
       },
 
     ]
@@ -441,7 +441,7 @@ const QCM_BANK = {
 
       {
         q: 'La pénicillinase est :',
-        opts: ['Un antibiotique', 'Une enzyme bactérienne inactivant les pénicillines', 'Un facteur de virulence', 'Un mécanisme d'efflux'],
+        opts: ['Un antibiotique', 'Une enzyme bactérienne inactivant les pénicillines', 'Un facteur de virulence', 'Un mécanisme d\'efflux'],
         a: 1,
         exp: 'La pénicillinase est une bêta-lactamase qui hydrolyse le cycle bêta-lactame. Les inhibiteurs (acide clavulanique) la neutralisent.'
       },
@@ -455,13 +455,13 @@ const QCM_BANK = {
 
       {
         q: 'La PCR permet :',
-        opts: ['De cultiver des bactéries', 'D'amplifier des séquences d'ADN spécifiques', 'De mesurer la résistance', 'De visualiser des virus'],
+        opts: ['De cultiver des bactéries', 'D\'amplifier des séquences d\'ADN spécifiques', 'De mesurer la résistance', 'De visualiser des virus'],
         a: 1,
-        exp: 'La PCR amplifie exponentiellement une séquence d'ADN cible. Elle permet un diagnostic rapide et sensible de nombreux agents infectieux.'
+        exp: 'La PCR amplifie exponentiellement une séquence d\'ADN cible. Elle permet un diagnostic rapide et sensible de nombreux agents infectieux.'
       },
 
       {
-        q: 'L'hépatite C se transmet principalement par :',
+        q: 'L\'hépatite C se transmet principalement par :',
         opts: ['Voie oro-fécale', 'Voie sexuelle', 'Voie parentérale (sang)', 'Voie aérienne'],
         a: 2,
         exp: 'Le VHC se transmet principalement par voie parentérale. Les antiviraux à action directe (AAD) permettent la guérison dans >95% des cas.'
