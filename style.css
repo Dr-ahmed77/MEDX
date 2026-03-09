@@ -327,3 +327,31 @@ a{cursor:pointer;text-decoration:none}
 @media(max-width:1100px){.home-grid{grid-template-columns:1fr}.hg-side{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stats-layout{grid-template-columns:1fr}.stats-side{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}}
 @media(max-width:900px){.auth-left{width:100%}.auth-right{display:none}.auth-screen{justify-content:center}.nav-links{display:none}.mob-nav{display:flex}.main{padding-bottom:80px}.stats-row{grid-template-columns:repeat(2,1fr)}.exam-layout{grid-template-columns:1fr}.exam-map-card{position:static}.result-details{grid-template-columns:repeat(2,1fr)}.years-grid{grid-template-columns:repeat(2,1fr)}.achievements-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){.hero{flex-direction:column;padding:28px}.xp-ring-wrap{width:100px;height:100px}.stats-row{grid-template-columns:repeat(2,1fr)}.exam-random{flex-direction:column}.exam-config{min-width:auto;width:100%}}
+
+/* ══ ANNALES ══ */
+.ann-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.ann-tab{padding:10px 20px;background:var(--bg2);border:1.5px solid var(--border);border-radius:50px;color:var(--muted2);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Sora',sans-serif}
+.ann-tab:hover{border-color:var(--ec);color:var(--ec)}
+.ann-tab.active{background:color-mix(in srgb,var(--ec) 15%,transparent);border-color:var(--ec);color:var(--ec)}
+
+.ann-etab-header{display:flex;align-items:center;gap:18px;padding:24px 28px;background:color-mix(in srgb,var(--ec) 8%,transparent);border:1px solid color-mix(in srgb,var(--ec) 25%,transparent);border-radius:var(--r2);margin-bottom:20px}
+.ann-etab-icon{font-size:40px}
+.ann-etab-header h2{font-size:20px;font-weight:900;margin-bottom:4px}
+.ann-etab-header p{font-size:13px;color:var(--muted)}
+
+.ann-years-grid{display:flex;flex-direction:column;gap:12px}
+.ann-year-card{display:flex;align-items:center;gap:18px;padding:20px 24px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r2);cursor:pointer;transition:all .3s}
+.ann-year-card:hover{border-color:var(--ec);transform:translateX(6px);background:color-mix(in srgb,var(--ec) 5%,var(--bg2))}
+.ann-year-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.ann-year-info{flex:1}
+.ann-year-info h3{font-size:16px;font-weight:800;margin-bottom:4px}
+.ann-year-info p{font-size:13px;color:var(--muted)}
+.ann-year-arrow{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:9px 18px;border:1.5px solid currentColor;border-radius:10px;transition:all .2s}
+.ann-year-card:hover .ann-year-arrow{background:var(--ec);color:white;border-color:var(--ec)}
+
+.ann-viewer{display:flex;flex-direction:column;gap:16px;height:calc(100vh - 120px)}
+.ann-viewer-header{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2)}
+.ann-viewer-header h3{flex:1;font-size:15px;font-weight:800}
+#annFrame{flex:1;border:none;border-radius:var(--r2);background:var(--bg2);min-height:600px}
+
+@media(max-width:600px){.ann-year-card{flex-wrap:wrap}.ann-year-arrow{width:100%;justify-content:center}}
