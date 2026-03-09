@@ -623,6 +623,7 @@ function renderAll() {
   renderExamSubjects();
   renderExamHistory();
   renderLibrary('all');
+  renderAnnales();
   renderStats();
   renderAchievements();
   renderChart();
@@ -1182,3 +1183,160 @@ auth.onAuthStateChanged(user=>{
     loadUserFromFirestore(user.uid).then(()=>{ showApp(); });
   }
 });
+
+// ══════════════════════════════════════════
+// ANNALES — EXAMENS ANNÉES PRÉCÉDENTES
+// ══════════════════════════════════════════
+//
+// 📝 COMMENT AJOUTER UN ÉTABLISSEMENT :
+//   Copiez un bloc { id, name, icon, years:[] } et ajoutez-le dans ANNALES_DATA
+//
+// 📝 COMMENT AJOUTER UNE ANNÉE :
+//   Dans years[], ajoutez : { year:'2023', drive:'VOTRE_LIEN_DRIVE' }
+//   Le lien Drive doit être en mode "Tout le monde avec le lien"
+//
+// ══════════════════════════════════════════
+
+const ANNALES_DATA = [
+
+  // ════════════════════════════════
+  // 🏥 FACULTÉ D'ORAN
+  // ════════════════════════════════
+  {
+    id: 'oran',
+    name: 'Faculté de Médecine — Oran',
+    icon: '🏥',
+    color: '#0066FF',
+    years: [
+      { year: '2ème Année', drive: 'https://drive.google.com/drive/folders/1coBMUiI0stbz0BlmmZ3wwxlU33MrQzX5?usp=drive_link' },
+      // Ajoutez d'autres années ici :
+      // { year: '1ère Année', drive: 'LIEN_DRIVE_ICI' },
+      // { year: '3ème Année', drive: 'LIEN_DRIVE_ICI' },
+    ]
+  },
+
+  // ════════════════════════════════
+  // 🏥 ANNEXE DE TIARET
+  // ════════════════════════════════
+  {
+    id: 'tiaret',
+    name: 'Annexe de Tiaret',
+    icon: '🏫',
+    color: '#00D4AA',
+    years: [
+      { year: '2ème Année', drive: 'https://drive.google.com/drive/folders/1gseZf5X2644ATpM8jzbnePdmXfaqYDNB?usp=drive_link' },
+      // Ajoutez d'autres années ici :
+      // { year: '1ère Année', drive: 'LIEN_DRIVE_ICI' },
+      // { year: '3ème Année', drive: 'LIEN_DRIVE_ICI' },
+    ]
+  },
+
+  // ════════════════════════════════
+  // ➕ AJOUTEZ UN NOUVEL ÉTABLISSEMENT ICI
+  // ════════════════════════════════
+  // {
+  //   id: 'alger',
+  //   name: 'Faculté de Médecine — Alger',
+  //   icon: '🏥',
+  //   color: '#FF6B6B',
+  //   years: [
+  //     { year: '1ère Année', drive: 'LIEN_DRIVE_ICI' },
+  //   ]
+  // },
+
+];
+
+// ── État Annales ──
+let annCurrentEtab = ANNALES_DATA[0]?.id || '';
+
+// ── Render Annales ──
+function renderAnnales() {
+  renderAnnTabs();
+  renderAnnContent(annCurrentEtab);
+}
+
+function renderAnnTabs() {
+  const c = document.getElementById('annTabs');
+  if (!c) return;
+  c.innerHTML = ANNALES_DATA.map(e =>
+    `<button class="ann-tab ${e.id === annCurrentEtab ? 'active' : ''}"
+      onclick="switchAnnEtab('${e.id}')"
+      style="--ec:${e.color}">
+      ${e.icon} ${e.name}
+    </button>`
+  ).join('');
+}
+
+function switchAnnEtab(id) {
+  annCurrentEtab = id;
+  closeViewer();
+  renderAnnTabs();
+  renderAnnContent(id);
+}
+
+function renderAnnContent(id) {
+  const c = document.getElementById('annContent');
+  if (!c) return;
+  const etab = ANNALES_DATA.find(e => e.id === id);
+  if (!etab) return;
+
+  if (!etab.years.length) {
+    c.innerHTML = '<p style="color:var(--muted);padding:20px 0">Aucune année disponible pour cet établissement.</p>';
+    return;
+  }
+
+  c.innerHTML = `
+    <div class="ann-etab-header" style="--ec:${etab.color}">
+      <span class="ann-etab-icon">${etab.icon}</span>
+      <div>
+        <h2>${etab.name}</h2>
+        <p>${etab.years.length} année(s) disponible(s)</p>
+      </div>
+    </div>
+    <div class="ann-years-grid">
+      ${etab.years.map(y => `
+        <div class="ann-year-card" onclick="openDriveViewer('${y.drive}', '${etab.name} — ${y.year}')" style="--ec:${etab.color}">
+          <div class="ann-year-icon" style="background:${etab.color}22;color:${etab.color}">📂</div>
+          <div class="ann-year-info">
+            <h3>${y.year}</h3>
+            <p>Examens et sujets disponibles</p>
+          </div>
+          <div class="ann-year-arrow" style="color:${etab.color}">
+            <i class="fas fa-folder-open"></i> Ouvrir
+          </div>
+        </div>`).join('')}
+    </div>
+  `;
+}
+
+function openDriveViewer(driveUrl, title) {
+  // Convertir lien Drive en lien embed
+  let embedUrl = driveUrl;
+
+  // Si c'est un dossier Drive → ouvrir dans nouvel onglet (pas embeddable)
+  if (driveUrl.includes('/drive/folders/')) {
+    window.open(driveUrl, '_blank');
+    showToast('Dossier Drive ouvert dans un nouvel onglet 📂', 'info');
+    return;
+  }
+
+  // Si c'est un fichier PDF → embed
+  embedUrl = driveUrl
+    .replace('/view', '/preview')
+    .replace('/edit', '/preview');
+
+  document.getElementById('annViewerTitle').textContent = title;
+  document.getElementById('annViewerOpen').href = driveUrl;
+  document.getElementById('annFrame').src = embedUrl;
+  document.getElementById('annContent').style.display = 'none';
+  document.getElementById('annTabs').style.display = 'none';
+  document.getElementById('annViewer').style.display = 'block';
+}
+
+function closeViewer() {
+  document.getElementById('annViewer').style.display = 'none';
+  document.getElementById('annContent').style.display = 'block';
+  document.getElementById('annTabs').style.display = 'flex';
+  const frame = document.getElementById('annFrame');
+  if (frame) frame.src = '';
+}
